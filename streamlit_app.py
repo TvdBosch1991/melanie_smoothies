@@ -1,6 +1,7 @@
 # Import python packages
 import streamlit as st
 import requests
+import pandas as pd
 from snowflake.snowpark.functions import col
 
 # Write directly to the app
@@ -17,6 +18,8 @@ session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('SEARCH_ON'))
 st.dataframe(data=my_dataframe, use_container_width=True)
 st.stop()
+
+
 
 ingredients_list = st.multiselect(
     'Choose up to 5 ingredients:'
